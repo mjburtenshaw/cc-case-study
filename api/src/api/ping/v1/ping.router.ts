@@ -1,4 +1,4 @@
-import { controller } from "./ping.controller";
+import { controller } from "./ping.ctrl";
 import express from "express";
 
 const router = express.Router();

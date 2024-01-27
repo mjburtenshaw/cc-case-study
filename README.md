@@ -26,6 +26,8 @@ An app that validates a credit card number using the Luhn checksum algorithm.
 
 ## Design
 
+In general, for a monolith like this I would install a tool like turborepo for easy workspace management, but that proved to be too much a chore for something this small in scope.
+
 ### API
 
 Separation of concerns is the guiding star of the API file tree design.

@@ -1,29 +1,22 @@
 import "dotenv/config";
-import cors from "cors";
+import { serverMiddlewares } from "./server-middlewares";
 import express from "express";
-import { StatusCodes } from "http-status-codes";
 
-function startApi() {
+function startApi(requestSizeLimit: string) {
   const { PORT } = process.env;
-  const REQUEST_SIZE_LIMIT = "10mb";
 
   const api = express();
 
-  api.use(express.json({ limit: REQUEST_SIZE_LIMIT }));
-  api.use(express.urlencoded({ limit: REQUEST_SIZE_LIMIT, extended: false }));
-  api.use(cors());
-
-  api.get("/ping", (_, res) => {
-    console.info(`📡 the API is live`);
-    res.sendStatus(StatusCodes.OK);
-  });
+  serverMiddlewares.useBodyParser(api, requestSizeLimit);
+  serverMiddlewares.useCors(api);
+  serverMiddlewares.useRouters(api);
 
   const httpServer = api.listen(PORT, () => {
     const url = `http://localhost:${PORT}`;
-    console.info(`✅ API is ready to accept connections at ${url}`);
+    console.info(`✅ the API is ready to accept connections at ${url}`);
   });
 
-  return { sammApi: api, httpServer };
+  return { api, httpServer };
 }
 
 export const server = {

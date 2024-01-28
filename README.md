@@ -6,13 +6,15 @@ An app that validates a credit card number using the Luhn checksum algorithm.
 
 - [Usage](#usage)
   - [Requirements](#requirements)
-  - [UI Library Explorer](#ui-library-explorer)
-- [Design](#Design)
+- [Testing](#testing)
   - [API](#api)
+  - [UI Library Explorer](#ui-library-explorer)
+- [Design](#design)
+  - [API](#api-1)
   - [Client](#client)
 - [Technologies](#technologies)
-  - [API](#api)
-  - [Client](#client)
+  - [API](#api-2)
+  - [Client](#client-1)
 
 ## Usage
 
@@ -36,7 +38,13 @@ An app that validates a credit card number using the Luhn checksum algorithm.
 
 > 🔧 If you change the `NODE_ENV` API environment to `production`, it will use a third-party credit card algorithm.
 
-> 🧮 A proprietary algorithm can be found in [`api/src/services/credit-card/local.creditCard.service.ts`](api/src/services/credit-card/local.creditCard.service.ts)
+> 🧮 A proprietary algorithm can be found in [`api/src/services/credit-card/local.creditCard.service.ts`](api/src/services/credit-card/local.creditCard.service.ts).
+
+## Testing
+
+### API
+
+Run `npm run test`
 
 ### UI Library Explorer
 
@@ -93,6 +101,8 @@ Here are some additional technologies used:
 - [cors](https://github.com/expressjs/cors) to easily manage cross-origin resource sharing.
 - [dotenv](https://github.com/motdotla/dotenv) to easily manage environment variables in development.
 - [http-status-codes](https://github.com/prettymuchbryce/http-status-codes#readme) for semantic use of HTTP standards.
+- [ts-jest](https://kulshekhar.github.io/ts-jest/) is the test runner that allows tests to be written in TypeScript.
+- [ts-node](https://typestrong.org/ts-node/) is a required dependency of `ts-jest`.
 
 ### Client
 

@@ -7,6 +7,10 @@ export class LocalCreditCardService implements CreditCardService {
 
   /** Our proprietary algorithm for checking credit card numbers */
   isCreditCardNumber(candidate: string): boolean {
+    if (!candidate) {
+      return false;
+    }
+
     let sum = 0;
     let alternate = false;
 

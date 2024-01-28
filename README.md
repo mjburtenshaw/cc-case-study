@@ -23,12 +23,20 @@ An app that validates a credit card number using the Luhn checksum algorithm.
 ---
 
 1. Clone this repository to your machine.
-2. Start the API: `cd api && npm i && npm run dev`
-3. Start the client: `cd client && npm i && npm run dev`
+2. Move into the project: `cd cc-case-study`
+3. Create a environment file for the API: `cp api.sample.env api/.env`
+4. Create a environment file for the client: `cp client.sample.env client/.env`
+5. Modify values in the environment files as you see fit, (though they should work out of the box).
+6. Start the API: `cd api && npm i && npm run dev`
+7. Start the client: `cd client && npm i && npm run dev`
 
 > ⛔️ You will encounter a splat page if you attempt to go anywhere in the client outside the index route.
 
 > 😎 Dark mode is available if you set a property `theme` to `dark` in localStorage. A refresh is required.
+
+> 🔧 If you change the `NODE_ENV` API environment to `production`, it will use a third-party credit card algorithm.
+
+> 🧮 A proprietary algorithm can be found in [`api/src/services/credit-card/local.creditCard.service.ts`](api/src/services/credit-card/local.creditCard.service.ts)
 
 ### UI Library Explorer
 
@@ -49,6 +57,8 @@ For the most part, all third-party software is treated properly as a vendor. Thi
 I used a proxy pattern to construct the credit card service. It is overkill for the actual scope of this project, but I wanted to illustrate how I would design interactions with cloud vendor software.
 
 The API design is one with versioning front of mind, this allows us to maintain retrocompatability with clients and innovate on APIs without disturbing them.
+
+An HTTP server is used for convenience. If this is going to production, I would implement HTTPS.
 
 ### Client
 

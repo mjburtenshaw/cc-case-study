@@ -14,6 +14,10 @@ function startApi(requestSizeLimit: string) {
   serverMiddlewares.useCors(api);
   serverMiddlewares.useRouters(api);
 
+  // TODO: Implement logger
+  // TODO: Implement observability
+  // TODO: Implement metrics
+
   const httpServer = api.listen(PORT, () => {
     const url = `http://localhost:${PORT}`;
     console.info(`✅ the API is ready to accept connections at ${url}`);
